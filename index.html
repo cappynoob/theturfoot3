@@ -1,0 +1,142 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>THE TURFOOT</title>
+<style>
+:root{--p:#3a12ff;--bg:#fff;--tx:#222;--card:#faf9ff;--bd:#e6e2f7;--mut:#777;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14131c;--tx:#eee;--card:#1d1b2b;--bd:#332f4d;--mut:#aaa}}
+:root[data-theme="dark"]{--bg:#14131c;--tx:#eee;--card:#1d1b2b;--bd:#332f4d;--mut:#aaa}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;font:14px/1.4 Inter,system-ui,sans-serif;background:var(--bg);color:var(--tx)}
+button,input,select,textarea{font:inherit;color:inherit}
+.btn{border:1px solid var(--bd);background:var(--bg);padding:8px 14px;border-radius:4px;font-size:12px;font-weight:600;text-transform:uppercase;cursor:pointer}
+.btn.p{background:var(--p);color:#fff;border-color:var(--p)}.btn.d{color:#d33}
+input,select,textarea{border:0;border-bottom:1px solid var(--mut);background:transparent;padding:8px 2px;width:100%;border-radius:0}
+textarea{border:1px solid var(--bd);padding:8px;min-height:150px}
+input[type=color]{width:60px;padding:0;height:34px}input[type=checkbox]{width:auto}
+label{display:block;font-weight:600;margin:16px 0 2px}
+.top{background:var(--p);color:#fff;height:48px;display:flex;align-items:center;gap:12px;padding:0 16px;font-weight:600;position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.top a{color:#fff;text-decoration:none}.top .s{flex:1}
+.adm{display:flex}.side{width:64px;flex:none;text-align:center;padding-top:8px}
+.side a{display:block;padding:10px 0;font-size:10px;color:var(--mut);text-decoration:none}.side a.on{color:var(--p)}.side a span{display:block;font-size:20px}
+.main{flex:1;min-width:0;padding:20px}.w{max-width:520px;margin:0 auto}
+h3{margin:26px 0 10px}.row{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid var(--bd);flex-wrap:wrap}.row .g{flex:1;min-width:120px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:6px;padding:14px;margin-bottom:12px}
+.cols{display:flex;gap:16px;overflow-x:auto;align-items:flex-start}.col{min-width:210px;flex:none}
+.bx{background:var(--p);color:#fff;padding:6px 8px;font-weight:600;font-size:12px;border-radius:3px 3px 0 0;margin-top:8px}
+.bl{background:var(--card);border:1px solid var(--bd);padding:4px 8px;font-size:13px}
+.chip{display:inline-block;background:var(--bd);border-radius:4px;padding:8px 14px;margin:0 8px 8px 0;font-size:12px}.chip b{display:block;font-size:18px}
+table{width:100%;border-collapse:collapse}th,td{padding:8px 4px;text-align:center;font-size:13px}th:nth-child(2),td:nth-child(2){text-align:left}
+.hero{background:#5b42e3;background:color-mix(in srgb,var(--p) 80%,#fff);color:#fff;text-align:center;padding:34px 12px 70px}.hero h1{margin:0;font-size:32px}
+.nav{background:var(--p);margin:-40px 8px 0;border-radius:14px 14px 0 0;display:flex;justify-content:center;gap:4px;padding:10px;flex-wrap:wrap;box-shadow:0 8px 16px #0003;position:relative}
+.nav a{color:#fff;text-decoration:none;font-size:11px;font-weight:700;padding:9px 11px;border-radius:6px;text-transform:uppercase}.nav a.on{background:#ffffff33}
+.pc{margin:0 8px;min-height:60vh;padding:16px;background:var(--bg)}.pc>div{max-width:780px;margin:0 auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.mc{background:var(--card);border:1px solid var(--bd);border-radius:4px;overflow:hidden;font-size:13px}
+.mh{background:var(--bd);display:flex;justify-content:space-between;padding:3px 8px;font-size:11px;color:var(--mut)}.mr{display:flex;justify-content:space-between;padding:6px 8px}
+.sc{font-style:normal;color:#fff;font-weight:700;min-width:22px;text-align:center;border-radius:3px;background:#999}.sc.w{background:#22c55e}.sc.l{background:#ef5350}
+.ref{display:inline-block;background:var(--bd);font-size:11px;border-radius:10px;padding:2px 8px;margin:2px 8px 6px}
+.tabs{display:flex;background:var(--bd);border-radius:4px;overflow:hidden;margin-bottom:14px}.tabs a{flex:1;text-align:center;padding:9px 4px;font-size:11px;font-weight:700;text-transform:uppercase;color:var(--mut);cursor:pointer;text-decoration:none}.tabs a.on{background:var(--p);color:#fff}
+.pcard{display:flex;align-items:center;gap:8px;padding:12px;background:var(--card);border-radius:4px;box-shadow:0 1px 3px #0002;text-decoration:none;color:var(--tx)}
+.av{width:34px;height:34px;border-radius:50%;background:var(--bd);object-fit:cover;display:inline-flex;align-items:center;justify-content:center}
+.big{font-size:20px;text-align:center;padding:14px}
+small,.mut{color:var(--mut)}
+</style></head><body><div id="app"></div>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let db=null,ok=false;try{db=JSON.parse(localStorage.getItem('tf')||'null')}catch(e){}
+db=db||{admin:null,ts:[]};
+const save=()=>{try{localStorage.setItem('tf',JSON.stringify(db))}catch(e){}};
+const uid=()=>'p'+Math.random().toString(36).slice(2,8),T=s=>db.ts.find(t=>t.slug===s),pl=(t,id)=>t.players.find(p=>p.id===id);
+const H=async s=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)))].map(b=>b.toString(16).padStart(2,'0')).join('');
+const isAuth=()=>{try{return ok||sessionStorage.getItem('tfa')=='1'}catch(e){return ok}};
+const cur=()=>T(location.hash.replace(/^#\/?/,'').split('/')[1]);
+const RULES="RÈGLES OFFICIELLES DU TOURNOI\n\n1. Format : matchs en 1 contre 1.\n2. Durée : 7 min en poule, 8 min en phase finale, sans mi-temps. 2 min entre les matchs.\n3. Élimination directe en phase finale ; égalité = tirs au but.\n4. Sortie de touche : remise en jeu au pied. Faute volontaire : coup franc direct.\n5. Victoire : le joueur avec le plus de buts.\n6. Gestion de la rage : tout comportement irrespectueux peut entraîner une disqualification.";
+// ---------- logique ----------
+function stand(t,g){const r={};g.ids.forEach(i=>r[i]={id:i,j:0,g:0,n:0,p:0,pts:0,bp:0,bc:0});
+t.matches.filter(m=>m.phase=='poule'&&m.label==g.name&&m.done).forEach(m=>{const a=r[m.a],b=r[m.b];if(!a||!b)return;a.j++;b.j++;a.bp+=m.sa;a.bc+=m.sb;b.bp+=m.sb;b.bc+=m.sa;
+if(m.sa>m.sb){a.g++;b.p++;a.pts+=+t.win}else if(m.sa<m.sb){b.g++;a.p++;b.pts+=+t.win}else{a.n++;b.n++;a.pts+=+t.draw;b.pts+=+t.draw}});
+return Object.values(r).sort((x,y)=>y.pts-x.pts||(y.bp-y.bc)-(x.bp-x.bc)||y.bp-x.bp)}
+function res(t,x){if(!x)return null;if(x[0]=='p')return x;const [k,a,b]=x.split(':');
+if(k=='G'){const g=t.groups.find(g=>g.name==a);if(!g||!t.matches.filter(m=>m.phase=='poule'&&m.label==a).every(m=>m.done))return null;return stand(t,g)[b-1]?.id||null}
+const m=t.matches.find(m=>m.id==a);if(!m||!m.done||m.sa==m.sb)return null;const w=m.sa>m.sb?m.a:m.b,l=m.sa>m.sb?m.b:m.a;return res(t,k=='W'?w:l)}
+function nm(t,x){const r=res(t,x);if(r)return esc(pl(t,r)?.name);const [k,a,b]=String(x).split(':');
+if(k=='G')return b+(b==1?'er ':'e ')+a;const m=t.matches.find(m=>m.id==a);return (k=='W'?'Vainqueur ':'Perdant ')+esc(m?.label)}
+const tm=(s,i,st)=>{const [h,m]=s.split(':').map(Number),x=h*60+m+i*st;return String(Math.floor(x/60)%24).padStart(2,'0')+':'+String(x%60).padStart(2,'0')};
+function gen(t){if(t.players.length<4){alert('Ajoutez au moins 4 joueurs.');return}
+if(t.matches.length&&!confirm('Remplacer tous les matchs existants ?'))return;
+const A=[],B=[];t.players.forEach((p,i)=>(i%2?B:A).push(p.id));t.groups=[{name:'Poule A',ids:A},{name:'Poule B',ids:B}];
+const rr=(g)=>{const o=[];for(let r=0;r<2;r++)for(let i=0;i<g.ids.length;i++)for(let j=i+1;j<g.ids.length;j++)o.push(r?[g.ids[j],g.ids[i]]:[g.ids[i],g.ids[j]]);return o};
+const la=rr(t.groups[0]),lb=rr(t.groups[1]),M=[],mk=(phase,label,a,b,id)=>M.push({id:id||'m'+M.length+uid(),phase,label,a,b,ref:'',time:'',sa:null,sb:null,done:false});
+for(let i=0;i<Math.max(la.length,lb.length);i++){if(la[i])mk('poule','Poule A',...la[i]);if(lb[i])mk('poule','Poule B',...lb[i])}
+mk('ldc','Demi-Finale 1','G:Poule A:1','G:Poule B:2','sf1');mk('ldc','Demi-Finale 2','G:Poule B:1','G:Poule A:2','sf2');
+if(A.length>2&&B.length>2)mk('eur','Finale Perdante','G:Poule A:3','G:Poule B:3','fp');
+mk('ldc','Match Pour La 3ème Place','L:sf1','L:sf2','tp');mk('ldc','Finale','W:sf1','W:sf2','fin');
+t.matches=M;sched(t);save();render()}
+function sched(t){t.matches.forEach((m,i)=>{m.time=tm(t.start,i,+t.step);const an=[nm(t,m.a),nm(t,m.b)];const c=t.refs.filter(r=>!an.includes(esc(r.name)));m.ref=c.length?c[i%c.length].id:''})}
+function status(t){if(!t.matches.length)return 'Non planifié';const d=t.matches.filter(m=>m.done).length;return d==t.matches.length?'Terminé':d?'En cours':'À venir'}
+function pst(t,id){const s={j:0,g:0,n:0,p:0,bp:0,bc:0};t.matches.filter(m=>m.done).forEach(m=>{const a=res(t,m.a),b=res(t,m.b);if(a!=id&&b!=id)return;const f=a==id?m.sa:m.sb,c=a==id?m.sb:m.sa;s.j++;s.bp+=f;s.bc+=c;f>c?s.g++:f<c?s.p++:s.n++});return s}
+// ---------- vues publiques ----------
+const rn=(t,m)=>esc(t.refs.find(r=>r.id==m.ref)?.name||'');
+function mc(t,m){const row=(k,s,o)=>{const c=!m.done?'':m[s]>m[o]?'w':m[s]<m[o]?'l':'';return `<div class=mr><b>${nm(t,m[k])}</b>${m.done?`<i class="sc ${c}">${m[s]}</i>`:''}</div>`};
+return `<div class=mc data-q="${esc((nm(t,m.a)+' '+nm(t,m.b)+' '+rn(t,m)).toLowerCase())}"><div class=mh><span>${esc(m.label)}</span><span>${m.time} · ${esc(t.terrain)}</span></div>${row('a','sa','sb')}${row('b','sb','sa')}${m.ref?`<span class=ref>🎽 ${rn(t,m)}</span>`:''}</div>`}
+let ct='poule';
+function ptab(t,g){return `<div class=card style="padding:0;overflow-x:auto"><b style="display:block;padding:8px 12px;background:var(--bd)">${esc(g.name)}</b><table><tr><th>#</th><th>Joueur</th><th>J</th><th>G</th><th>N</th><th>P</th><th style="background:var(--p);color:#fff">PTS</th><th>BP</th><th>BC</th><th>+/-</th></tr>${stand(t,g).map((r,i)=>`<tr><td>${i+1}</td><td>${esc(pl(t,r.id)?.name)}</td><td>${r.j}</td><td>${r.g}</td><td>${r.n}</td><td>${r.p}</td><td style="background:var(--p);color:#fff;font-weight:700">${r.pts}</td><td>${r.bp}</td><td>${r.bc}</td><td>${r.bp-r.bc}</td></tr>`).join('')}</table></div>`}
+function pub(t,tab,arg){const tabs=[['tournoi','🏆 Tournoi'],['joueurs','👕 Joueurs'],['classements','Classements'],['calendrier','Calendrier'],['arbitres','Arbitres'],['stats','Stats']];
+const ms=[...t.matches].sort((a,b)=>a.time.localeCompare(b.time));let b='';
+if(tab=='tournoi'){const nx=ms.find(m=>!m.done),ls=ms.filter(m=>m.done).slice(-3).reverse();
+b=`<div class=card><b>Statut :</b> ${status(t)}</div>${nx?`<h3>Prochain match</h3><div class=grid>${mc(t,nx)}</div>`:''}${ls.length?`<h3>Derniers résultats</h3><div class=grid>${ls.map(m=>mc(t,m)).join('')}</div>`:''}<h3>Informations</h3><div class=card style="white-space:pre-wrap">${esc(t.desc)}</div>`}
+else if(tab=='joueurs'&&arg){const p=pl(t,arg);if(!p)return pub(t,'joueurs');const s=pst(t,arg);
+b=`<a class=ref href="#/${t.slug}/joueurs">← Retour</a><div class=card style="display:flex;gap:12px;align-items:center">${p.photo?`<img class=av src="${p.photo}">`:'<span class=av>👕</span>'}<h2 style="margin:0">${esc(p.name)} ${p.num?'#'+esc(p.num):''}</h2></div><div>${[['Matchs',s.j],['Victoires',s.g],['Nuls',s.n],['Défaites',s.p],['Buts',s.bp],['Encaissés',s.bc]].map(x=>`<span class=chip>${x[0]}<b>${x[1]}</b></span>`).join('')}</div><h3>Historique</h3><div class=grid>${ms.filter(m=>[res(t,m.a),res(t,m.b)].includes(arg)).map(m=>mc(t,m)).join('')}</div>`}
+else if(tab=='joueurs')b=`<input placeholder="Trouver un joueur" oninput="fl(this.value)"><br><br><div class=grid>${t.players.map(p=>`<a class="pcard mc" data-q="${esc(p.name.toLowerCase())}" href="#/${t.slug}/joueurs/${p.id}">${p.photo?`<img class=av src="${p.photo}">`:'👕'} ${esc(p.name)}</a>`).join('')}</div>`;
+else if(tab=='classements'){const eu=t.matches.filter(m=>m.phase=='eur'),ld=t.matches.filter(m=>m.phase=='ldc');
+b=`<div class=tabs>${[['poule','Phase de groupes'],['ldc','Ligue des Champions'],['eur','Ligue Europa']].map(x=>`<a class="${ct==x[0]?'on':''}" onclick="ct='${x[0]}';render()">${x[1]}</a>`).join('')}</div>`+(ct=='poule'?(t.groups.map(g=>ptab(t,g)).join('')||'<p class=mut>Aucun groupe.</p>'):`<div class=grid>${(ct=='ldc'?ld:eu).map(m=>mc(t,m)).join('')}</div>`)}
+else if(tab=='calendrier')b=`<input placeholder="Trouver un joueur ou un arbitre" oninput="fl(this.value)"><br><br><div class=grid>${ms.map(m=>mc(t,m)).join('')}</div>`;
+else if(tab=='arbitres'&&arg){const r=t.refs.find(r=>r.id==arg);b=`<a class=ref href="#/${t.slug}/arbitres">← Retour</a><h2>${esc(r?.name)}</h2><div class=grid>${ms.filter(m=>m.ref==arg).map(m=>mc(t,m)).join('')}</div>`}
+else if(tab=='arbitres')b=`<div class=grid>${t.refs.map(r=>`<a class=pcard href="#/${t.slug}/arbitres/${r.id}">🎽 ${esc(r.name)}</a>`).join('')}</div>`;
+else if(tab=='stats'){const S=t.players.map(p=>({pp:p,...pst(t,p.id)}));const top=(k,f)=>[...S].sort(f)[0];const bs=top('bp',(a,b)=>b.bp-a.bp),bd=[...S].filter(s=>s.j).sort((a,b)=>a.bc/a.j-b.bc/b.j)[0];
+b=`<div>${bs?`<span class=chip>Meilleur buteur<b>${esc(bs.pp.name)} (${bs.bp})</b></span>`:''}${bd?`<span class=chip>Meilleure défense<b>${esc(bd.pp.name)} (${bd.bc})</b></span>`:''}</div><div class=card style="padding:0;overflow-x:auto"><table><tr><th>#</th><th>Joueur</th><th>MJ</th><th>V</th><th>N</th><th>D</th><th>BP</th><th>BC</th></tr>${S.map((s,i)=>`<tr><td>${i+1}</td><td>${esc(s.pp.name)}</td><td>${s.j}</td><td>${s.g}</td><td>${s.n}</td><td>${s.p}</td><td>${s.bp}</td><td>${s.bc}</td></tr>`).join('')}</table></div>`;}
+return `<div style="--p:${t.color}"><div class=hero><h1>${esc(t.name)}</h1><div>${esc(t.date)}${t.lieu?' · '+esc(t.lieu):''}</div></div><div class=nav>${tabs.map(x=>`<a class="${x[0]==tab?'on':''}" href="#/${t.slug}/${x[0]}">${x[1]}</a>`).join('')}</div><div class=pc><div>${b}</div></div></div>`}
+function fl(v){v=v.toLowerCase();document.querySelectorAll('[data-q]').forEach(e=>e.style.display=e.dataset.q.includes(v)?'':'none')}
+// ---------- admin ----------
+function login(){return `<div class=w style="padding:60px 16px"><h2>THE TURFOOT — Administration</h2><p class=mut>${db.admin?'Connectez-vous.':'Première visite : choisissez votre ID et mot de passe.'}</p><label>ID utilisateur</label><input id=li><label>Mot de passe</label><input id=lp type=password onkeydown="if(event.key=='Enter')lg()"><p id=le style="color:#d33"></p><button class="btn p" onclick="lg()">${db.admin?'Connexion':'Créer l\'accès'}</button></div>`}
+async function lg(){const i=$('#li').value.trim(),p=$('#lp').value;if(!i||!p)return;const h=await H(i+':'+p);if(!db.admin){db.admin=h;save()}else if(db.admin!=h){$('#le').textContent='Identifiants incorrects';return}ok=true;try{sessionStorage.setItem('tfa','1')}catch(e){}render()}
+function dash(){const li=(a)=>db.ts.filter(t=>!!t.arch==a).map(t=>`<div class=card><b style="font-size:16px">${esc(t.name).toUpperCase()}</b><br><span class=mut>URL publique : /${t.slug} · Date : ${esc(t.date)||'—'} · Lieu : ${esc(t.lieu)||'—'} · ${status(t)}</span><br><br><a class="btn p" href="#/manage/${t.slug}/general">Gérer</a> <a class=btn href="#/${t.slug}/tournoi">Voir le site</a> <a class=btn href="#/manage/${t.slug}/general">Modifier</a> <button class=btn onclick="dup('${t.slug}')">Dupliquer</button> <button class=btn onclick="arch('${t.slug}')">${a?'Désarchiver':'Archiver'}</button></div>`).join('');
+return `<div class=top><a href="#/">THE TURFOOT</a><span class=s></span><a href="#" onclick="ok=false;try{sessionStorage.clear()}catch(e){}">Déconnexion</a></div><div class=main style="max-width:900px;margin:auto"><button class="btn p" onclick="$('#nw').style.display='block'">+ Créer un tournoi</button>
+<div id=nw class=card style="display:none;margin-top:14px"><label>Nom</label><input id=nn placeholder="The Turfoot 2" oninput="$('#ns').value=this.value.toLowerCase().replace(/[^a-z0-9]/g,'')"><label>URL (/…)</label><input id=ns><label>Date</label><input id=nd placeholder="Samedi 14 juin 2025"><label>Lieu</label><input id=nl><label>Description</label><textarea id=ne style="min-height:70px"></textarea><label><input type=checkbox id=nx checked> Pré-remplir : Louca, Samet, Tito, Nathan, Jayden, Léo + format poules/finales</label><br><button class="btn p" onclick="mkT()">Créer</button></div>
+<h3>MES TOURNOIS</h3>${li(false)||'<p class=mut>Aucun tournoi.</p>'}${db.ts.some(t=>t.arch)?'<h3>Archivés</h3>'+li(true):''}</div>`}
+function mkT(){const name=$('#nn').value.trim(),slug=$('#ns').value.trim();if(!name||!slug||slug=='manage'||T(slug)){alert('Nom et URL uniques requis.');return}
+const t={slug,name,date:$('#nd').value,lieu:$('#nl').value,desc:$('#ne').value||RULES,color:'#3a12ff',win:3,draw:1,start:'14:00',step:9,terrain:'Terrain',players:[],refs:[],groups:[],matches:[]};db.ts.push(t);
+if($('#nx').checked){['Louca','Samet','Tito','Nathan','Jayden','Léo'].forEach((n,i)=>{t.players.push({id:uid(),name:n,num:i+1,photo:''});});t.refs=['Louca','Nathan','Tito'].map(n=>({id:'r'+uid(),name:n}));
+save();gen(t)}save();location.hash='#/manage/'+slug+'/general'}
+function dup(s){const o=T(s),n=prompt('Nom de la nouvelle édition ?','');if(!n)return;const sl=prompt('URL (sans /) ?',n.toLowerCase().replace(/[^a-z0-9]/g,''));if(!sl||T(sl)||sl=='manage'){alert('URL invalide ou déjà utilisée.');return}
+const c=JSON.parse(JSON.stringify(o));c.slug=sl;c.name=n;c.arch=false;c.date='';c.matches.forEach(m=>{m.sa=m.sb=null;m.done=false});db.ts.push(c);save();render()}
+function arch(s){const t=T(s);t.arch=!t.arch;save();render()}
+let pt='p';
+function adm(t,tab){const nav=[['general','⚙','Général'],['participants','👕','Participants'],['classement','🏁','Classement'],['calendrier','📅','Calendrier'],['presentation','🖥','Présentation'],['scores','🔢','Scores']];let b='';
+const inp=(l,k,ty='text')=>`<label>${l}</label><input type=${ty} value="${esc(t[k])}" onchange="upd('${k}',this.value)">`;
+if(tab=='general')b=`<div class=w>${inp('Nom du tournoi','name')}${inp('Date','date')}${inp('Lieu','lieu')}<label>Description / règlement (affiché sur la page publique)</label><textarea onchange="upd('desc',this.value)">${esc(t.desc)}</textarea>${inp('Couleur principale','color','color')}<h3>Comptage de points</h3>${inp('Points par victoire','win','number')}${inp('Points par match nul','draw','number')}<h3>Planning</h3>${inp('Heure de début','start','time')}${inp('Minutes entre deux débuts de match','step','number')}${inp('Nom du terrain','terrain')}<br><br><button class=btn onclick="sched(cur());save();render()">Recalculer les horaires</button> <button class="btn d" onclick="delT()">Supprimer le tournoi</button></div>`;
+else if(tab=='participants'){const L=pt=='p'?t.players:t.refs;b=`<div class=tabs style="max-width:500px;margin:auto"><a class="${pt=='p'?'on':''}" onclick="pt='p';render()">Joueurs</a><a class="${pt=='r'?'on':''}" onclick="pt='r';render()">Arbitres</a></div><div style="display:flex;gap:8px;margin:14px 0"><input id=pn placeholder="Prénom">${pt=='p'?'<input id=pnum placeholder="N°" style="width:70px">':''}<button class="btn p" style="white-space:nowrap" onclick="addp()">Ajouter</button></div>${L.map((p,i)=>`<div class=row>${pt=='p'?(p.photo?`<img class=av src="${p.photo}">`:'<span class=av>👕</span>'):'🎽'}<span class=g>${esc(p.name)} ${p.num?'<small>#'+esc(p.num)+'</small>':''}</span>${pt=='p'?`<button class=btn onclick="$('#f${p.id}').click()">Photo</button><input hidden type=file accept="image/*" id="f${p.id}" onchange="ph(this,'${p.id}')"><button class=btn onclick="mv(${i},-1)">↑</button><button class=btn onclick="mv(${i},1)">↓</button>`:''}<button class=btn onclick="edp('${p.id}')">✎</button><button class="btn d" onclick="dlp('${p.id}')">🗑</button></div>`).join('')}`}
+else if(tab=='classement'){const cl=(ph,ti)=>`<div class=col><h3 style="margin-top:0">${ti}</h3>${ph=='poule'?t.groups.map(g=>`<div class=bx>${esc(g.name)} <span style="float:right">x2</span></div>${g.ids.map(i=>`<div class=bl>${esc(pl(t,i)?.name)}</div>`).join('')}`).join(''):t.matches.filter(m=>m.phase==ph).map(m=>`<div class=bx>${esc(m.label)}</div><div class=bl>${nm(t,m.a)}</div><div class=bl>${nm(t,m.b)}</div>`).join('')}</div>`;
+b=`<p><button class="btn p" onclick="gen(cur())">Générer le format (2 poules + demi-finales + finale)</button> <button class="btn d" onclick="if(confirm('Vider le schéma ?')){cur().matches=[];cur().groups=[];save();render()}">Vider le schéma</button></p><div class=cols>${cl('poule','Phase de groupes')}${cl('ldc','Ligue Des Champions')}${cl('eur','Ligue Europa')}</div>`}
+else if(tab=='calendrier')b=`<p><button class=btn onclick="sched(cur());save();render()">Replanifier tout</button></p>`+t.matches.map(m=>`<div class=row><input type=time style="width:110px" value="${m.time}" onchange="mset('${m.id}','time',this.value)"><span class=g><b>${nm(t,m.a)} - ${nm(t,m.b)}</b> <small>${esc(m.label)}</small></span><select style="width:140px" onchange="mset('${m.id}','ref',this.value)"><option value="">Arbitre…</option>${t.refs.map(r=>`<option value="${r.id}" ${r.id==m.ref?'selected':''}>${esc(r.name)}</option>`).join('')}</select></div>`).join('');
+else if(tab=='presentation')b=`<div class=w><div class=card><b>Site Web</b> <span class=chip style="background:#c8f0d5;padding:2px 8px">Actif</span><p>Lien public :</p><input readonly value="theturfoot.site/${t.slug}"><p><a class="btn p" href="#/${t.slug}/tournoi">Ouvrir la page publique</a></p></div><p class=mut>La page publique lit les mêmes données que l'administration : chaque score validé apparaît immédiatement (aussi dans un autre onglet).</p></div>`;
+else if(tab=='scores'){const ph=(p,l)=>{const a=t.matches.filter(m=>m.phase==p);return a.length?`<span class=chip>${l}<b>${a.filter(m=>m.done).length}/${a.length}</b></span>`:''};
+b=`<h3 style="margin-top:0">Progrès</h3>${ph('poule','Phase de groupes')}${ph('ldc','Ligue Des Champions')}${ph('eur','Ligue Europa')}<h3>Matchs</h3>`+t.matches.map(m=>{const rd=res(t,m.a)&&res(t,m.b);return `<div class=row><b style="width:50px">${m.time}</b><span class=g>${nm(t,m.a)} ${rd?`<input id="a${m.id}" type=number min=0 style="width:52px" value="${m.sa??''}"> - <input id="b${m.id}" type=number min=0 style="width:52px" value="${m.sb??''}">`:' - '} ${nm(t,m.b)} <small>${esc(m.label)}</small></span>${rd?`<button class="btn p" onclick="sv('${m.id}')">${m.done?'Modifier':'Valider'}</button>`:'<small>En attente</small>'}${m.done?`<button class="btn d" onclick="cs('${m.id}')">Effacer</button>`:''}</div>`}).join('')}
+return `<div class=top><a href="#/manage">←</a><span>${esc(t.name)}</span><span class=s></span><a href="#/${t.slug}/tournoi">👁 Présentation</a></div><div class=adm><div class=side>${nav.map(n=>`<a class="${n[0]==tab?'on':''}" href="#/manage/${t.slug}/${n[0]}"><span>${n[1]}</span>${n[2]}</a>`).join('')}</div><div class=main>${b}</div></div>`}
+function upd(k,v){const t=cur();t[k]=v;save();if(k=='name')render()}
+function mset(id,k,v){cur().matches.find(m=>m.id==id)[k]=v;save()}
+function sv(id){const t=cur(),m=t.matches.find(m=>m.id==id),a=$('#a'+id).value,b=$('#b'+id).value;if(a===''||b===''){alert('Entrez les deux scores.');return}
+if(m.phase!='poule'&&+a==+b){alert('Pas d\'égalité en phase finale : entrez le score final après tirs au but.');return}
+m.a=res(t,m.a);m.b=res(t,m.b);m.sa=+a;m.sb=+b;m.done=true;save();render()}
+function cs(id){const m=cur().matches.find(m=>m.id==id);m.sa=m.sb=null;m.done=false;save();render()}
+function addp(){const t=cur(),n=$('#pn').value.trim();if(!n)return;pt=='p'?t.players.push({id:uid(),name:n,num:$('#pnum').value,photo:''}):t.refs.push({id:'r'+uid(),name:n});save();render()}
+function edp(id){const t=cur(),p=pl(t,id)||t.refs.find(r=>r.id==id),n=prompt('Prénom',p.name);if(n)p.name=n;if(pt=='p'){const x=prompt('Numéro',p.num||'');if(x!==null)p.num=x}save();render()}
+function dlp(id){const t=cur();if(!confirm('Supprimer ?'))return;t.players=t.players.filter(p=>p.id!=id);t.refs=t.refs.filter(r=>r.id!=id);save();render()}
+function mv(i,d){const L=cur().players,j=i+d;if(j<0||j>=L.length)return;[L[i],L[j]]=[L[j],L[i]];save();render()}
+function ph(inp,id){const f=inp.files[0];if(!f)return;const im=new Image();im.onload=()=>{const c=document.createElement('canvas');c.width=c.height=120;const s=Math.min(im.width,im.height);c.getContext('2d').drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,120,120);pl(cur(),id).photo=c.toDataURL('image/jpeg',.7);save();render()};im.src=URL.createObjectURL(f)}
+function delT(){if(confirm('Supprimer définitivement ce tournoi ?')){db.ts=db.ts.filter(t=>t!==cur());save();location.hash='#/manage'}}
+function land(){return `<div class=hero style="--p:#3a12ff"><h1>THE TURFOOT</h1><p>Tournois de foot</p><a class=btn href="#/manage" style="color:#222">Espace organisateur</a></div><div class=pc style="max-width:700px;margin:auto"><div>${db.ts.map(t=>`<a class=pcard href="#/${t.slug}/tournoi" style="margin-bottom:8px">🏆 <b>${esc(t.name)}</b> <span class=mut>/${t.slug}</span></a>`).join('')||'<p class=mut>Aucun tournoi publié. Créez-en un depuis /manage.</p>'}</div></div>`}
+function render(){const h=location.hash.replace(/^#\/?/,'').split('/'),a=$('#app');
+if(!h[0])a.innerHTML=land();
+else if(h[0]=='manage'){if(!isAuth())a.innerHTML=login();else{const t=T(h[1]);a.innerHTML=t?adm(t,h[2]||'general'):dash()}}
+else{const t=T(h[0]);a.innerHTML=t?pub(t,h[1]||'tournoi',h[2]):'<p class=big>Tournoi introuvable. <a href="#/">Accueil</a></p>'}}
+addEventListener('hashchange',()=>{render();scrollTo(0,0)});addEventListener('storage',e=>{if(e.key=='tf'){try{db=JSON.parse(e.newValue)||db}catch(x){}render()}});render();
+</script></body></html>
